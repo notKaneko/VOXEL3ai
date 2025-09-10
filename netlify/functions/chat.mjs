@@ -21,7 +21,7 @@ export async function handler(event, context) {
           { role: "system", content: "You are a helpful Math Study Planner assistant." },
           { role: "user", content: userMessage }
         ],
-        max_tokens: 800,
+        max_completion_tokens: 800,
         temperature: 0.7
       })
     });
