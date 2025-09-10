@@ -1,0 +1,61 @@
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }, 250);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fadeUpAnim').forEach(el => observer.observe(el));
+
+
+
+// VOXEL3.html
+const textarea = document.getElementById("userInput");
+const baseHeight = textarea.clientHeight; // 50px
+
+textarea.addEventListener("input", () => {
+    textarea.style.height = baseHeight + "px"; // reset to base height
+    if (textarea.scrollHeight > baseHeight) {
+    textarea.style.height = textarea.scrollHeight + "px"; 
+    }
+});
+
+
+
+
+
+document.getElementById("generateButton").addEventListener("click", async () => {
+  const userInput = document.getElementById("userInput").value.trim();
+  const outputDiv = document.getElementById("output");
+
+  if (!userInput) {
+    outputDiv.textContent = "⚠️ Please enter a request first.";
+    return;
+  }
+
+  outputDiv.textContent = "⏳ Generating study plan...";
+
+  try {
+    const response = await fetch("/.netlify/functions/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userInput })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    const data = await response.json();
+    const reply = data.choices[0].message.content;
+    outputDiv.textContent = reply;
+
+  } catch (err) {
+    outputDiv.textContent = "❌ Error: " + err.message;
+  }
+});

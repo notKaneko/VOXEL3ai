@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Kanit", sans-serif;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    
+}
+
+html {
+    margin: 0;
+    padding: 0px;
+    background-color: #000;
+    height: 100vh;
+}
+
+#navBar {
+    padding: 12px 24px 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+   
+    
+    backdrop-filter: blur(30px);
+    background-color: rgba(44, 44, 44, 0.5);
+    
+
+    align-items: center;
+    
+    z-index: 100;
+}
+
+ul li {
+    display: inline-block;
+    
+}
+
+#logo {
+    font-family: "Kanit", system-ui;
+    font-weight: 800;
+    font-size: 50px;
+    color: white;
+}
+
+
+#navBarList .navBarListItem{
+    color: white;
+    font-size: 20px;
+    padding: 5px 12px 5px 12px;
+    margin: 0 6px 0 6px;
+    
+}
+
+#navBarList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* ------------------------ APP ------------------ */
+.header {
+    color: "#fff";
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.par {
+    color: #fff;
+    z-index: 1;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0 0 0 8px;
+}
+
+#appContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #212121;
+    height: 100vh;
+
+    padding: 30px;
+}
+
+.textGradientDiffusion {
+    background: linear-gradient(to right, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#output {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: #fff;
+    border-radius: 18px;
+    border-width: 1px;
+    background-color: #000;
+    height: 75%;
+    margin-bottom: 10px;
+    padding: 0 40px 0 40px;
+    color: #fff;
+}
+
+.intro {
+    
+    align-self: center;
+}
+
+#userInputDiv {
+    border-style: dashed;
+    display: flex;
+    justify-content: space-between;
+}
+
+#userInput {
+    box-sizing: border-box;
+    border: 1px #fff solid;
+    background-color: #000;
+    color: #fff;
+    border-radius: 18px;
+    padding: 10px 12px 10px 16px;
+    resize: none;
+    width: 80%;
+    font-size: 18px;
+    font-weight: 200;
+    max-height: 140px;
+    height: 50px;
+    outline: none;
+}
+
+#userInput:focus {
+    border: 1px #fff dashed;
+}
+
+#generateButton {
+    border: 1px #fff solid;
+    background-color: #fff;
+    border-radius: 18px;
+    width: 18%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: ease-out 0.1s;
+}
+
+#generateButton:hover {
+    border: 1px #fff dashed;
+    background-color: #000;
+    color: #fff;
+}
