@@ -33,7 +33,7 @@ document.getElementById("generateButton").addEventListener("click", async () => 
   const outputDiv = document.getElementById("output");
 
   if (!userInput) {
-    outputDiv.textContent = "⚠️ Please enter a request first.";
+    outputDiv.textContent = "Please enter a request first.";
     return;
   }
 
@@ -54,8 +54,9 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     const data = await response.json();
     const reply = data.choices[0].message.content;
     outputDiv.textContent = reply;
+    console.log("Raw response:", data);
 
   } catch (err) {
-    outputDiv.textContent = "❌ Error: " + err.message;
+    outputDiv.textContent = "Error: " + err.message;
   }
 });
