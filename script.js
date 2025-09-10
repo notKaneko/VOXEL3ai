@@ -37,7 +37,7 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     return;
   }
 
-  outputDiv.textContent = "⏳ Generating study plan...";
+  outputDiv.textContent = "Give me a moment while I cook something up...";
 
   try {
     const response = await fetch("/.netlify/functions/chat", {
