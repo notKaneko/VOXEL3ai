@@ -66,6 +66,18 @@ export async function handler(event, context) {
       })
     });
 
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+
+    let streamData = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      streamData += decoder.decode(value, { stream: true });
+    }
+
     return {
       statusCode: 200,
       headers: {
@@ -73,7 +85,7 @@ export async function handler(event, context) {
         "Cache-Control": "no-cache",
         "Connection": "keep-alive"
       },
-      body: response.body,
+      body: streamData,
     }
 
   } catch (err) {
