@@ -5,11 +5,12 @@ export async function handler(event, context) {
     const body = JSON.parse(event.body);
     const messages = body.messages;
 
+    /*
     if (!messages || !Array.isArray(messages)) {
       return { statusCode: 400, body: "Missing message in request body" };
     }
 
-    /*
+    
     const yearMatch = userMessage.match(/\b(20\d{2})\b/);
     const requestedYear = yearMatch ? Number(yearMatch[1]) : null;
 
