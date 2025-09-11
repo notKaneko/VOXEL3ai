@@ -60,17 +60,20 @@ export async function handler(event, context) {
           Then, you  may continue to create practice questions relating to the questions that came out in that year as well.
           { role: "user", content: userMessage } */
         temperature: 1,
-        max_completion_tokens: 10000
+        max_completion_tokens: 5000,
+        stream: true
       })
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      return { statusCode: response.status, body: errorText };
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive"
+      },
+      body: response.body,
     }
-
-    const data = await response.json();
-    return { statusCode: 200, body: JSON.stringify(data) };
 
   } catch (err) {
     return { statusCode: 500, body: `Server Error: ${err.message}` };
