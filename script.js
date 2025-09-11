@@ -33,12 +33,12 @@ let conversation = [
 ];
 
 
-const userInput = document.getElementById("userInput").value.trim();
-const outputDiv = document.getElementById("output");
-outputDiv.textContent = "Need a study plan for BacII? Ask away.";
+
+document.getElementById("output").textContent = "Need a study plan for BacII? Ask away.";
 
 document.getElementById("generateButton").addEventListener("click", async () => {
-
+  const userInput = document.getElementById("userInput").value.trim();
+  const outputDiv = document.getElementById("output");
 
   if (!userInput) {
     outputDiv.textContent = "Please enter a request first.";
