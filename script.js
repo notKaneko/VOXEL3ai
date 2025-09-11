@@ -26,6 +26,8 @@ textarea.addEventListener("input", () => {
 
 
 
+
+
 let conversation = [
   { role: "system", content: "You are a Math National Exam Study Planner assistant."}
 ];
