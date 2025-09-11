@@ -6,7 +6,7 @@
     font-family: "Kanit", sans-serif;
     overflow-x: hidden;
     box-sizing: border-box;
-    
+    flex: 0 0 auto;
 }
 
 html {
@@ -81,10 +81,13 @@ ul li {
 #appContainer {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     background-color: #212121;
     height: 100vh;
+    
 
-    padding: 30px 30px 0 30px;
+    padding: 30px 30px 30px 30px;
+    flex: 1;
 }
 
 .textGradientDiffusion {
@@ -102,12 +105,12 @@ ul li {
     border-radius: 18px;
     border-width: 1px;
     background-color: #000;
-    height: 75%;
-    margin-bottom: 10px;
+    height: 80%;
     padding: 60px;
     font-size: 24px;
     font-weight: 300;
     color: #fff;
+    flex: 1;
 }
 
 .intro {
@@ -126,7 +129,7 @@ ul li {
     background-color: #fff;
     color: #000;
     border-radius: 18px;
-    padding: 10px 12px 10px 16px;
+    padding: 10px 10px 10px 16px;
     resize: none;
     width: 80%;
     font-size: 18px;
@@ -148,7 +151,7 @@ ul li {
     background-color: #fff;
     border-radius: 18px;
     width: 18%;
-    font-size: 32px;
+    font-size: 24px;
     cursor: pointer;
     transition: ease-out 0.2s;
 }
