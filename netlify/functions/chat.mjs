@@ -5,12 +5,11 @@ export async function handler(event, context) {
     const body = JSON.parse(event.body);
     const messages = body.messages;
 
-    /*
     if (!messages || !Array.isArray(messages)) {
       return { statusCode: 400, body: "Missing message in request body" };
     }
 
-    
+    /*
     const yearMatch = userMessage.match(/\b(20\d{2})\b/);
     const requestedYear = yearMatch ? Number(yearMatch[1]) : null;
 
@@ -61,32 +60,17 @@ export async function handler(event, context) {
           Then, you  may continue to create practice questions relating to the questions that came out in that year as well.
           { role: "user", content: userMessage } */
         temperature: 1,
-        max_completion_tokens: 5000,
-        stream: true
+        max_completion_tokens: 10000
       })
     });
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
-
-    let streamData = "";
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      streamData += decoder.decode(value, { stream: true });
+    if (!response.ok) {
+      const errorText = await response.text();
+      return { statusCode: response.status, body: errorText };
     }
 
-    return {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive"
-      },
-      body: streamData,
-    }
+    const data = await response.json();
+    return { statusCode: 200, body: JSON.stringify(data) };
 
   } catch (err) {
     return { statusCode: 500, body: `Server Error: ${err.message}` };
