@@ -13,7 +13,7 @@ export async function handler(event, context) {
     const yearMatch = userMessage.match(/\b(20\d{2})\b/);
     const requestedYear = yearMatch ? Number(yearMatch[1]) : null;
 
-    
+
     // Sample past exams
     const examsData = [
       {
@@ -59,8 +59,7 @@ export async function handler(event, context) {
           Then, you  may continue to create practice questions relating to the questions that came out in that year as well.*/
           { role: "user", content: userMessage }
         ],
-        temperature: 1,
-        max_completion_tokens: 800
+        temperature: 1
       })
     });
 
