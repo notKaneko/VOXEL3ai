@@ -151,7 +151,8 @@ ul li {
     background-color: #fff;
     border-radius: 18px;
     width: 18%;
-    font-size: 24px;
+    font-size: 18px;
+    font-weight: 500;
     cursor: pointer;
     transition: ease-out 0.2s;
 }
@@ -160,4 +161,15 @@ ul li {
     border: 1px #fff dashed;
     background-color: #000;
     color: #fff;
+}
+
+.fadeUpAnim {
+    opacity: 0;
+    transform: translateY(150px);
+    transition: opacity 0.8s cubic-bezier(.94,-0.01,.59,1.01), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fadeUpAnim.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
