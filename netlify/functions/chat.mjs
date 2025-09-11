@@ -39,7 +39,7 @@ export async function handler(event, context) {
     const baseKnowledge = yearData
       ? `Past exam ${requestedYear} questions:\n` +
         yearData.questions.map(q => `- ${q.topic}: ${q.question}`).join("\n")
-      : "No past exam data available for the requested year, let the user know the exam data only exists for 2015-2025";
+      : "Past Exam Data exists for only 2019 and 2020. If the user does not specify a specific year, create a general study plan instead using all the years you have as a general guideline.";
 
     // GPT call
     const response = await fetch("https://api.openai.com/v1/chat/completions", {

@@ -116,7 +116,6 @@ ul li {
 }
 
 #userInputDiv {
-    border-style: dashed;
     display: flex;
     justify-content: space-between;
 }
