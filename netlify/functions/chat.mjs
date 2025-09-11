@@ -60,7 +60,7 @@ export async function handler(event, context) {
           { role: "user", content: userMessage }
         ],
         temperature: 1,
-        max_completions_tokens: 1200
+        max_completion_tokens: 1200
       })
     });
 
