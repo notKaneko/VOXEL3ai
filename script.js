@@ -74,7 +74,7 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     if (conversation.length > maxMessages) {
       conversation = [conversation[0], ...conversation.slice(conversation.length - (maxMessages - 1))];
     }
-    outputDiv.textContent = reply;
+    outputDiv.innerHTML = reply;
     console.log("Raw response:", data);
     console.log("Conversation so far: ", conversation);
 
