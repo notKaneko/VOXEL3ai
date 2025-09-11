@@ -29,7 +29,7 @@ textarea.addEventListener("input", () => {
 
 
 let conversation = [
-  { role: "system", content: "You are a Math National Exam Study Planner assistant."}
+  { role: "system", content: `You are a Math National Exam Study Planner assistant. If you want to go down to a new line in your output, you need to use "<br>"`}
 ];
 
 document.getElementById("generateButton").addEventListener("click", async () => {
