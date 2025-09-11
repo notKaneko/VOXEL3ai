@@ -5,7 +5,7 @@ export async function handler(event, context) {
     const body = JSON.parse(event.body);
     const messages = body.messages;
 
-    if (!userMessage) {
+    if (!messages || !Array.isArray(messages)) {
       return { statusCode: 400, body: "Missing message in request body" };
     }
 
