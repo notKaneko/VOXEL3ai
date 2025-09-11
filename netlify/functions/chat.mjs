@@ -60,7 +60,7 @@ export async function handler(event, context) {
           Then, you  may continue to create practice questions relating to the questions that came out in that year as well.
           { role: "user", content: userMessage } */
         temperature: 1,
-        max_completion_tokens: 800
+        max_completion_tokens: 1500
       })
     });
 
