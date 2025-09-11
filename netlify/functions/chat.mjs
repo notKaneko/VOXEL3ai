@@ -53,14 +53,12 @@ export async function handler(event, context) {
       },
       body: JSON.stringify({
         model: "gpt-5-mini",
-        messages: [
-          messages
+        messages: messages,
           /*
           { role: "system", content: `You are a Math National Exam Study Planner assistant.` }, Refer to ${baseKnowledge} and
           if they specify a year, on the start of your message you should mention what topics came out in that year of exams.
           Then, you  may continue to create practice questions relating to the questions that came out in that year as well.
           { role: "user", content: userMessage } */
-        ],
         temperature: 1,
         max_completion_tokens: 800
       })
