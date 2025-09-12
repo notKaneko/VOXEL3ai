@@ -68,28 +68,34 @@ let conversation = [
 
 
 
-function animateText(element, text, speed = 40) {
-  element.innerHTML = ""; // clear old content
+function animateText(element, text, speed = 150) {
+  element.innerHTML = "";
+  const words = text.split(/(\s+)/); // keep spaces
+
   let i = 0;
 
-  // Create a wrapper span for animation
-  const wrapper = document.createElement("span");
-  wrapper.style.display = "inline-block";
-  wrapper.style.opacity = 0;
-  wrapper.style.transform = "translateY(10px)";
-  element.appendChild(wrapper);
-
   function type() {
-    if (i < text.length) {
-      wrapper.innerHTML += text[i];
+    if (i < words.length) {
+      const word = words[i];
+
+      if (word === "<br>") {
+        element.appendChild(document.createElement("br"));
+      } else {
+        const span = document.createElement("span");
+        span.innerHTML = word;
+        span.style.opacity = 0;
+        span.style.display = "inline";
+        span.style.transform = "translateY(20px)";
+        element.appendChild(span);
+
+        void span.offsetWidth; // reflow
+        span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        span.style.opacity = 1;
+        span.style.transform = "translateY(0)";
+      }
+
       i++;
-
-      // Animate visibility of the wrapper
-      wrapper.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-      wrapper.style.opacity = 1;
-      wrapper.style.transform = "translateY(0)";
-
-      setTimeout(type, speed); // next character
+      setTimeout(type, speed);
     }
   }
 
@@ -146,7 +152,7 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     console.log("Raw response:", data);
     console.log("Conversation so far: ", conversation);*/
     outputDiv.textContent = "";
-    animateText(outputDiv, reply, 25);
+    animateText(outputDiv, reply, 5);
 
   } catch (err) {
     outputDiv.textContent = "Error: Gateway Timeout or " + err.message;

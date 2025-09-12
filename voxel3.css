@@ -118,6 +118,10 @@ ul li {
 
 }
 
+#output span {
+    will-change: opacity, transform;
+}
+
 
 .intro {
     
