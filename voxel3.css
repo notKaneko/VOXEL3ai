@@ -35,14 +35,15 @@ html {
 
 ul li {
     display: inline-block;
-    
+    list-style: none;
 }
 
 #logo {
     font-family: "Kanit", system-ui;
     font-weight: 800;
-    font-size: 50px;
+    font-size: 40px;
     color: white;
+    padding: 0px 10px 0px 10px;
 }
 
 
@@ -82,11 +83,11 @@ ul li {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #212121;
+    background: url('aibackground.webp');
     height: 100vh;
     
 
-    padding: 30px 30px 30px 30px;
+    padding: 150px 30px 30px 30px;
     flex: 1;
 }
 
@@ -99,32 +100,24 @@ ul li {
 
 #output {
     display: flex;
+    font-family: 'Courier New', Courier, monospace;
     flex-direction: column;
     border-style: solid;
     border-color: #fff;
     border-radius: 18px;
     border-width: 1px;
-    background: linear-gradient(40deg, #303030, #000000);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
     height: 80%;
     padding: 60px;
     font-size: 24px;
     font-weight: 300;
     color: #fff;
     flex: 1;
-
+    transition: all 0.3s ease;
 
 }
 
-.output span {
-    display: inline;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.output span.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 .intro {
     
@@ -147,15 +140,18 @@ ul li {
     width: 80%;
     font-size: 18px;
     font-weight: 200;
+    min-height: 50px;
     max-height: 140px;
     height: 50px;
     outline: none;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
 }
+
 
 #userInput:focus {
     border: 1px #fff dashed;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
     color: #fff;
 }
 
