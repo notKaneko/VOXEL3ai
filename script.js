@@ -34,34 +34,43 @@ let conversation = [
 
 
 
-function animateText(element, text, speed = 30) {
-  element.innerHTML = ""; // clear old content
+function animateText(element, text, speed = 40) {
+  element.innerHTML = "";
   let i = 0;
-
-  // Create a wrapper span for animation
-  const wrapper = document.createElement("span");
-  wrapper.style.display = "inline-block";
-  wrapper.style.opacity = 0;
-  wrapper.style.transform = "translateY(30px)";
-  element.appendChild(wrapper);
 
   function type() {
     if (i < text.length) {
-      wrapper.innerHTML += text[i];
-      i++;
+      const char = text[i];
 
-      // Animate visibility of the wrapper
-      wrapper.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
-      wrapper.style.opacity = 1;
-      wrapper.style.transform = "translateY(0)";
 
-      setTimeout(type, speed); // next character
+      if (text.slice(i, i + 4) === "<br>") {
+        element.appendChild(document.createElement("br"));
+        i += 4;
+      } else {
+
+        const span = document.createElement("span");
+        span.innerHTML = char; 
+        span.style.opacity = 0;
+        span.style.display = "inline-block";
+        span.style.transform = "translateY(10px)";
+        element.appendChild(span);
+
+        // force reflow so transition can apply
+        void span.offsetWidth;
+
+        span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        span.style.opacity = 1;
+        span.style.transform = "translateY(0)";
+
+        i++;
+      }
+
+      setTimeout(type, speed);
     }
   }
 
   type();
 }
-
 
 
 document.getElementById("output").textContent = "Need a study plan for BacII? Ask away.";

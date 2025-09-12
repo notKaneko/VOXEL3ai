@@ -112,7 +112,11 @@ ul li {
     color: #fff;
     flex: 1;
 
-    transition: all 0.3s ease-out;
+
+}
+
+#output span {
+    will-change: opacity, transform;
 }
 
 .intro {
