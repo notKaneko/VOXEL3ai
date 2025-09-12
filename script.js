@@ -85,11 +85,11 @@ function animateText(element, text, speed = 150) {
         span.innerHTML = word;
         span.style.opacity = 0;
         span.style.display = "inline";
-        span.style.transform = "translateY(20px)";
+        span.style.transform = "translateY(30px)";
         element.appendChild(span);
 
         void span.offsetWidth; // reflow
-        span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        span.style.transition = "opacity 0.3s ease, transform 0.3s cubic-bezier(0,.4,0,1.15)";
         span.style.opacity = 1;
         span.style.transform = "translateY(0)";
       }
