@@ -68,7 +68,7 @@ let conversation = [
 
 
 
-function animateText(element, text, speed = 150) {
+function animateText(element, text, speed = 120) {
   element.innerHTML = "";
   const words = text.split(/(\s+)/); // keep spaces
 
@@ -85,13 +85,11 @@ function animateText(element, text, speed = 150) {
         span.innerHTML = word;
         span.style.opacity = 0;
         span.style.display = "inline";
-        span.style.transform = "translateY(30px)";
         element.appendChild(span);
 
         void span.offsetWidth; // reflow
-        span.style.transition = "opacity 0.3s ease, transform 0.3s cubic-bezier(0,.4,0,1.15)";
+        span.style.transition = "opacity 0.5s ease";
         span.style.opacity = 1;
-        span.style.transform = "translateY(0)";
       }
 
       i++;
@@ -102,27 +100,27 @@ function animateText(element, text, speed = 150) {
   type();
 }
 
-
-document.getElementById("output").textContent = "Need help with BacII 2026? Ask away.";
+animateText(document.getElementById("output"), "Need help with the 2026 BacII Exam? Ask Away.<br>ត្រូវការជំនួយទេ? ចាំសួរខ្ញុំផង។", 50); // initially set the output to display this
 
 document.getElementById("generateButton").addEventListener("click", async () => {
   const userInput = document.getElementById("userInput").value.trim();
   const outputDiv = document.getElementById("output");
 
   if (!userInput) {
-    outputDiv.textContent = "Please enter a request first.";
+    animateText(outputDiv, "Please enter something first.", 30);
     return;
   }
 
   conversation.push({ role: "user", content: userInput });
 
-  const maxMessages = 9;
+  const maxMessages = 9; // this is basically how much of the past conversation the ai remembers
 
   if (conversation.length > maxMessages) {
     conversation = [conversation[0], ...conversation.slice(conversation.length - (maxMessages - 1))];
   }
 
-  outputDiv.textContent = "Give me a moment...";
+
+  animateText(outputDiv, "Give me a moment... សូមរងចាំបន្តិច។", 30);
 
   try {
     const response = await fetch("/.netlify/functions/chat", {
@@ -152,9 +150,12 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     console.log("Raw response:", data);
     console.log("Conversation so far: ", conversation);*/
     outputDiv.textContent = "";
-    animateText(outputDiv, reply, 5);
+    animateText(outputDiv, reply, 10);
 
   } catch (err) {
-    outputDiv.textContent = "Error: Gateway Timeout or " + err.message;
+    setTimeout(() => {
+      outputDiv.textContent = "";
+      animateText(outputDiv, "Error: Gateway Timeout or " + err.message, 30);
+    }, 400);
   }
 });

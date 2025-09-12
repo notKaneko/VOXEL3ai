@@ -63,7 +63,7 @@ ul li {
 
 /* ------------------------ MAIN CONTENT ------------------ */
 #sec1Content {
-    background: url('aibackground.webp') center/cover no-repeat fixed;
+    background: url('aibackground.webp') no-repeat fixed;
     height: calc(100vh);
     display: flex;
     flex-direction: column;
@@ -132,7 +132,7 @@ ul li {
     justify-content: center;
 
     padding: 80px 50px 0 50px;
-    background: url('aibackground.webp') center/cover no-repeat fixed;
+    background: url('aibackground.webp') no-repeat fixed;
     
 }
 
