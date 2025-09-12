@@ -42,7 +42,7 @@ function animateText(element, text, speed = 30) {
   const wrapper = document.createElement("span");
   wrapper.style.display = "inline-block";
   wrapper.style.opacity = 0;
-  wrapper.style.transform = "translateY(10px)";
+  wrapper.style.transform = "translateY(30px)";
   element.appendChild(wrapper);
 
   function type() {
@@ -114,7 +114,7 @@ document.getElementById("generateButton").addEventListener("click", async () => 
     //outputDiv.innerHTML = reply;
     console.log("Raw response:", data);
     console.log("Conversation so far: ", conversation);
-    outputDiv.textContent = "";
+    outputDiv.innerHTML = "";
     animateText(outputDiv, reply, 25);
 
   } catch (err) {

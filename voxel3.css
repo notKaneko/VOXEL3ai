@@ -104,13 +104,15 @@ ul li {
     border-color: #fff;
     border-radius: 18px;
     border-width: 1px;
-    background-color: #000;
+    background: linear-gradient(40deg, #303030, #000000);
     height: 80%;
     padding: 60px;
     font-size: 24px;
     font-weight: 300;
     color: #fff;
     flex: 1;
+
+    transition: all 0.3s ease-out;
 }
 
 .intro {
@@ -150,7 +152,7 @@ ul li {
     border: 1px #fff solid;
     background-color: #fff;
     border-radius: 18px;
-    width: 18%;
+    width: 19%;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
@@ -172,4 +174,11 @@ ul li {
 .fadeUpAnim.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media screen and (max-width: 500px) {
+    #generateButton {
+        font-size: 16px;
+        font-weight: 400;
+    }
 }
