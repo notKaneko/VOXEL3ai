@@ -99,7 +99,7 @@ ul li {
 }
 
 #output {
-    display: flex;
+    display: inline;
     font-family: 'Courier New', Courier, monospace;
     flex-direction: column;
     border-style: solid;
