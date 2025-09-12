@@ -34,7 +34,7 @@ let conversation = [
 
 
 
-function animateText(element, text, speed = 40) {
+function animateText(element, text, speed = 50) {
   element.innerHTML = "";
   let i = 0;
 
@@ -51,7 +51,7 @@ function animateText(element, text, speed = 40) {
         const span = document.createElement("span");
         span.innerHTML = char; 
         span.style.opacity = 0;
-        span.style.display = "inline-block";
+        span.style.display = "inline";
         span.style.transform = "translateY(10px)";
         element.appendChild(span);
 
