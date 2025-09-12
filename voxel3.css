@@ -115,8 +115,15 @@ ul li {
 
 }
 
-#output span {
-    will-change: opacity, transform;
+.output span {
+    display: inline;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.output span.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .intro {

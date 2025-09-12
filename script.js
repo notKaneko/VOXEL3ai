@@ -34,42 +34,17 @@ let conversation = [
 
 
 
-function animateText(element, text, speed = 50) {
-  element.innerHTML = "";
-  let i = 0;
+function animateText(outputElement, text) {
+  outputElement.innerHTML = "";
+  [...text].forEach((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char; 
+    outputElement.appendChild(span);
 
-  function type() {
-    if (i < text.length) {
-      const char = text[i];
-
-
-      if (text.slice(i, i + 4) === "<br>") {
-        element.appendChild(document.createElement("br"));
-        i += 4;
-      } else {
-
-        const span = document.createElement("span");
-        span.innerHTML = char; 
-        span.style.opacity = 0;
-        span.style.display = "inline";
-        span.style.transform = "translateY(10px)";
-        element.appendChild(span);
-
-        // force reflow so transition can apply
-        void span.offsetWidth;
-
-        span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-        span.style.opacity = 1;
-        span.style.transform = "translateY(0)";
-
-        i++;
-      }
-
-      setTimeout(type, speed);
-    }
-  }
-
-  type();
+    setTimeout(() => {
+      span.classList.add("visible");
+    }, i * 30);
+  });
 }
 
 
