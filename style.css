@@ -32,7 +32,7 @@ html, body {
 
 ul li {
     display: inline-block;
-    
+    overflow: hidden;
 }
 
 #logo {
@@ -63,7 +63,8 @@ ul li {
 
 /* ------------------------ MAIN CONTENT ------------------ */
 #sec1Content {
-    background: url('aibackground.webp') no-repeat fixed;
+    background: url('aibackground.webp') center no-repeat fixed;
+    background-size: 100% 100%;
     height: calc(100vh);
     display: flex;
     flex-direction: column;
@@ -118,6 +119,9 @@ ul li {
     background-clip: text;
 }
 
+.material-symbols-rounded {
+    overflow: hidden;
+}
 
 
 
@@ -133,7 +137,7 @@ ul li {
 
     padding: 80px 50px 0 50px;
     background: url('aibackground.webp') no-repeat fixed;
-    
+    background-size: 100% 100%;
 }
 
 .headerCenter {
